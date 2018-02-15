@@ -13,11 +13,8 @@ defmodule Ale8583 do
   Returns `true` or `false` 
 
   Examples
-  iex(15)>  Ale8583.haveInISO?( iso_new, :c3)
-true
-iex(16)>  Ale8583.haveInISO?( iso_new, :c4)
-false
-iex(17)>
+
+
   """
   def haveInISO?({_,listISO,{_,_,_,_},_} , atomField) do
      List.keymember?(listISO, atomField, 0)
@@ -26,14 +23,10 @@ iex(17)>
   @doc """
     
   Function for validate if a field have in bitmap.
-
+  
   Returns `true` or `false` 
   #Examples 
-  iex(4)> iso_new2= Ale8583.haveBitMapSec?("888812A088888888")
-  true
-  iex(5)> iso_new2= Ale8583.haveBitMapSec?("688812A088888888")
-  false
-  iex(6)>
+ 
   """
   def haveInBitMap?( strBitMap, intField) do
     listBitMap=Ale8583.BitMap.getListBitMap(strBitMap)
@@ -51,9 +44,10 @@ iex(17)>
 
   Returns `raw`
   Examples
+  iex(15)>iso_new=Ale8583.new_with_out_conf({"0800","/Users/ale/testPrograms/ale8583/ale8583/ascii.iso.cfg"})
+  iex(16)> iso_new  = Ale8583.addField({ 3 , "012345"}, iso_new)
   iex(17)>  Ale8583.getTrama iso_new
 '08002000000000000000012345'
-iex(18)>
   """
   def  getTrama({:iso,listISO,{_,_,_,listISOconf},_}) do
     {_,strMTI} = List.keyfind(listISO,:mti,0)
@@ -120,7 +114,8 @@ iex(18)>
   Returns `value`
 
   Examples: 
-
+  iex(17)>iso_new=Ale8583.new_with_out_conf({"0800","/Users/ale/testPrograms/ale8583/ale8583/ascii.iso.cfg"})
+  iex(18)> iso_new  = Ale8583.addField({ 3 , "012345"}, iso_new)
   iex(19)>  Ale8583.getField( :c3 , iso_new)
 {:ok, "012345"}
 
@@ -154,9 +149,9 @@ iex(18)>
   Returns `true` or `false`
 
   Examples:
-  iex(4)> iso_new2= Ale8583.haveBitMapSec?("888812A088888888")
+  iex(4)> Ale8583.haveBitMapSec?("888812A088888888")
 true
-iex(5)> iso_new2= Ale8583.haveBitMapSec?("688812A088888888")
+iex(5)> Ale8583.haveBitMapSec?("688812A088888888")
 false
 
   """
@@ -212,319 +207,7 @@ false
   Returns `iso` 
   
   ##Examples
-  iex(4)> isoMTI2  = Ale8583.addField({ 3 , "012345"}, isoMTI)
-
-14:38:16.904 [debug] VALUE [ key: 3 atomKey: c3 value: 012345]
-
-14:38:16.907 [debug] OK INSERT AND PRIMARY BITMAP UPDATE, c3-3: value 012345
-{:iso,
- [
-   bp: "2000000000000000",
-   bs: "0000000000000000",
-   c3: "012345",
-   header_prosa: "",
-   mti: "0800"
- ],
- {[
-    c1: 0,
-    c2: 0,
-    c3: 1,
-    c4: 0,
-    c5: 0,
-    c6: 0,
-    c7: 0,
-    c8: 0,
-    c9: 0,
-    c10: 0,
-    c11: 0,
-    c12: 0,
-    c13: 0,
-    c14: 0,
-    c15: 0,
-    c16: 0,
-    c17: 0,
-    c18: 0,
-    c19: 0,
-    c20: 0,
-    c21: 0,
-    c22: 0,
-    c23: 0,
-    c24: 0,
-    c25: 0,
-    c26: 0,
-    c27: 0,
-    c28: 0,
-    c29: 0,
-    c30: 0,
-    c31: 0,
-    c32: 0,
-    c33: 0,
-    c34: 0,
-    c35: 0,
-    c36: 0,
-    c37: 0,
-    c38: 0,
-    c39: 0,
-    c40: 0,
-    c41: 0,
-    c42: 0,
-    c43: 0,
-    c44: 0,
-    c45: 0,
-    c46: 0,
-    ...
-  ],
-  [
-    c65: 0,
-    c66: 0,
-    c67: 0,
-    c68: 0,
-    c69: 0,
-    c70: 0,
-    c71: 0,
-    c72: 0,
-    c73: 0,
-    c74: 0,
-    c75: 0,
-    c76: 0,
-    c77: 0,
-    c78: 0,
-    c79: 0,
-    c80: 0,
-    c81: 0,
-    c82: 0,
-    c83: 0,
-    c84: 0,
-    c85: 0,
-    c86: 0,
-    c87: 0,
-    c88: 0,
-    c89: 0,
-    c90: 0,
-    c91: 0,
-    c92: 0,
-    c93: 0,
-    c94: 0,
-    c95: 0,
-    c96: 0,
-    c97: 0,
-    c98: 0,
-    c99: 0,
-    c100: 0,
-    c101: 0,
-    c102: 0,
-    c103: 0,
-    c104: 0,
-    c105: 0,
-    c106: 0,
-    c107: 0,
-    c108: 0,
-    c109: 0,
-    ...
-  ], :flagBMSec_NO,
-  [
-    c128: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c127: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c126: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c125: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c124: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c123: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c122: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c121: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c120: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c119: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c118: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c117: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c116: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c115: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c114: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c113: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c112: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c111: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c110: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c109: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c108: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c107: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c106: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c105: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c104: %{code: :ascii, length: 100, type: "ANS", var_length: 3},
-    c103: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c102: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c101: %{code: :ascii, length: 17, type: "ANS", var_length: 2},
-    c100: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c99: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c98: %{code: :ascii, length: 25, type: "ANS", var_length: 0},
-    c97: %{code: :ascii, length: 16, type: "N", var_length: 0},
-    c96: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c95: %{code: :ascii, length: 42, type: "AN", var_length: 0},
-    c94: %{code: :ascii, length: 7, type: "AN", var_length: 0},
-    c93: %{code: :ascii, length: 5, type: "AN", var_length: 0},
-    c92: %{code: :ascii, length: 2, type: "AN", var_length: 0},
-    c91: %{code: :ascii, length: 1, type: "AN", var_length: 0},
-    c90: %{code: :ascii, length: 42, type: "N", var_length: 0},
-    c89: %{code: :ascii, length: 16, type: "N", ...},
-    c88: %{code: :ascii, length: 16, ...},
-    c87: %{code: :ascii, ...},
-    c86: %{...},
-    ...
-  ]}, {:ok, "OK INSERT AND PRIMARY BITMAP UPDATE,c3-3: value 012345"}}
-iex(6)> iso_new= Ale8583.addField({ :c3 , "012345"}, isoMTI)
-
-16:17:47.796 [debug] VALUE [ key: 3 atomKey: c3 value: 012345]
-
-16:17:47.796 [debug] OK INSERT AND PRIMARY BITMAP UPDATE, c3-3: value 012345
-{:iso,
- [
-   bp: "2000000000000000",
-   bs: "0000000000000000",
-   c3: "012345",
-   header_prosa: "",
-   mti: "0800"
- ],
- {[
-    c1: 0,
-    c2: 0,
-    c3: 1,
-    c4: 0,
-    c5: 0,
-    c6: 0,
-    c7: 0,
-    c8: 0,
-    c9: 0,
-    c10: 0,
-    c11: 0,
-    c12: 0,
-    c13: 0,
-    c14: 0,
-    c15: 0,
-    c16: 0,
-    c17: 0,
-    c18: 0,
-    c19: 0,
-    c20: 0,
-    c21: 0,
-    c22: 0,
-    c23: 0,
-    c24: 0,
-    c25: 0,
-    c26: 0,
-    c27: 0,
-    c28: 0,
-    c29: 0,
-    c30: 0,
-    c31: 0,
-    c32: 0,
-    c33: 0,
-    c34: 0,
-    c35: 0,
-    c36: 0,
-    c37: 0,
-    c38: 0,
-    c39: 0,
-    c40: 0,
-    c41: 0,
-    c42: 0,
-    c43: 0,
-    c44: 0,
-    c45: 0,
-    c46: 0,
-    ...
-  ],
-  [
-    c65: 0,
-    c66: 0,
-    c67: 0,
-    c68: 0,
-    c69: 0,
-    c70: 0,
-    c71: 0,
-    c72: 0,
-    c73: 0,
-    c74: 0,
-    c75: 0,
-    c76: 0,
-    c77: 0,
-    c78: 0,
-    c79: 0,
-    c80: 0,
-    c81: 0,
-    c82: 0,
-    c83: 0,
-    c84: 0,
-    c85: 0,
-    c86: 0,
-    c87: 0,
-    c88: 0,
-    c89: 0,
-    c90: 0,
-    c91: 0,
-    c92: 0,
-    c93: 0,
-    c94: 0,
-    c95: 0,
-    c96: 0,
-    c97: 0,
-    c98: 0,
-    c99: 0,
-    c100: 0,
-    c101: 0,
-    c102: 0,
-    c103: 0,
-    c104: 0,
-    c105: 0,
-    c106: 0,
-    c107: 0,
-    c108: 0,
-    c109: 0,
-    ...
-  ], :flagBMSec_NO,
-  [
-    c128: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c127: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c126: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c125: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c124: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c123: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c122: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c121: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c120: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c119: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c118: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c117: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c116: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c115: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c114: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c113: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c112: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c111: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c110: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c109: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c108: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c107: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c106: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c105: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c104: %{code: :ascii, length: 100, type: "ANS", var_length: 3},
-    c103: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c102: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c101: %{code: :ascii, length: 17, type: "ANS", var_length: 2},
-    c100: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c99: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c98: %{code: :ascii, length: 25, type: "ANS", var_length: 0},
-    c97: %{code: :ascii, length: 16, type: "N", var_length: 0},
-    c96: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c95: %{code: :ascii, length: 42, type: "AN", var_length: 0},
-    c94: %{code: :ascii, length: 7, type: "AN", var_length: 0},
-    c93: %{code: :ascii, length: 5, type: "AN", var_length: 0},
-    c92: %{code: :ascii, length: 2, type: "AN", var_length: 0},
-    c91: %{code: :ascii, length: 1, type: "AN", var_length: 0},
-    c90: %{code: :ascii, length: 42, type: "N", var_length: 0},
-    c89: %{code: :ascii, length: 16, type: "N", ...},
-    c88: %{code: :ascii, length: 16, ...},
-    c87: %{code: :ascii, ...},
-    c86: %{...},
-    ...
-  ]}, {:ok, "OK INSERT AND PRIMARY BITMAP UPDATE,c3-3: value 012345"}}
-iex(7)>  
+ 
   """
   def addField({ key, value} , iso) do
     { _ , iso_new } =  do_addField({key,value},iso) 
@@ -555,152 +238,6 @@ iex(7)>
   
   
   ## Examples
-iex(1)> isoMTI=Ale8583.new_with_out_conf({"0800","/Users/ale/testPrograms/ale8583/ale8583/ascii.iso.cfg"})
-{:iso,
- [mti: "0800", bp: "0000000000000000", bs: "0000000000000000", header_prosa: ""],
- {[
-    c1: 0,
-    c2: 0,
-    c3: 0,
-    c4: 0,
-    c5: 0,
-    c6: 0,
-    c7: 0,
-    c8: 0,
-    c9: 0,
-    c10: 0,
-    c11: 0,
-    c12: 0,
-    c13: 0,
-    c14: 0,
-    c15: 0,
-    c16: 0,
-    c17: 0,
-    c18: 0,
-    c19: 0,
-    c20: 0,
-    c21: 0,
-    c22: 0,
-    c23: 0,
-    c24: 0,
-    c25: 0,
-    c26: 0,
-    c27: 0,
-    c28: 0,
-    c29: 0,
-    c30: 0,
-    c31: 0,
-    c32: 0,
-    c33: 0,
-    c34: 0,
-    c35: 0,
-    c36: 0,
-    c37: 0,
-    c38: 0,
-    c39: 0,
-    c40: 0,
-    c41: 0,
-    c42: 0,
-    c43: 0,
-    c44: 0,
-    c45: 0,
-    c46: 0,
-    ...
-  ],
-  [
-    c65: 0,
-    c66: 0,
-    c67: 0,
-    c68: 0,
-    c69: 0,
-    c70: 0,
-    c71: 0,
-    c72: 0,
-    c73: 0,
-    c74: 0,
-    c75: 0,
-    c76: 0,
-    c77: 0,
-    c78: 0,
-    c79: 0,
-    c80: 0,
-    c81: 0,
-    c82: 0,
-    c83: 0,
-    c84: 0,
-    c85: 0,
-    c86: 0,
-    c87: 0,
-    c88: 0,
-    c89: 0,
-    c90: 0,
-    c91: 0,
-    c92: 0,
-    c93: 0,
-    c94: 0,
-    c95: 0,
-    c96: 0,
-    c97: 0,
-    c98: 0,
-    c99: 0,
-    c100: 0,
-    c101: 0,
-    c102: 0,
-    c103: 0,
-    c104: 0,
-    c105: 0,
-    c106: 0,
-    c107: 0,
-    c108: 0,
-    c109: 0,
-    ...
-  ], :flagBMSec_NO,
-  [
-    c128: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c127: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c126: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c125: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c124: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c123: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c122: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c121: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c120: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c119: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c118: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c117: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c116: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c115: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c114: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c113: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c112: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c111: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c110: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c109: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c108: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c107: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c106: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c105: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c104: %{code: :ascii, length: 100, type: "ANS", var_length: 3},
-    c103: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c102: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c101: %{code: :ascii, length: 17, type: "ANS", var_length: 2},
-    c100: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c99: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c98: %{code: :ascii, length: 25, type: "ANS", var_length: 0},
-    c97: %{code: :ascii, length: 16, type: "N", var_length: 0},
-    c96: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c95: %{code: :ascii, length: 42, type: "AN", var_length: 0},
-    c94: %{code: :ascii, length: 7, type: "AN", var_length: 0},
-    c93: %{code: :ascii, length: 5, type: "AN", var_length: 0},
-    c92: %{code: :ascii, length: 2, type: "AN", var_length: 0},
-    c91: %{code: :ascii, length: 1, type: "AN", var_length: 0},
-    c90: %{code: :ascii, length: 42, type: "N", var_length: 0},
-    c89: %{code: :ascii, length: 16, type: "N", ...},
-    c88: %{code: :ascii, length: 16, ...},
-    c87: %{code: :ascii, ...},
-    c86: %{...},
-    ...
-  ]}, {:ok, "OK"}}
 
  """
   def new_with_out_conf({mti,path}, strHeaderPROSA \\ "") do
@@ -743,152 +280,6 @@ iex(1)> isoMTI=Ale8583.new_with_out_conf({"0800","/Users/ale/testPrograms/ale858
   
   
   ## Examples
-  iex(3)> iso_new2= Ale8583.deleteField(3, iso_new)
-{:iso,
- [bp: "2000000000000000", bs: "0000000000000000", header_prosa: "", mti: "0800"],
- {[
-    c1: 0,
-    c2: 0,
-    c3: 1,
-    c4: 0,
-    c5: 0,
-    c6: 0,
-    c7: 0,
-    c8: 0,
-    c9: 0,
-    c10: 0,
-    c11: 0,
-    c12: 0,
-    c13: 0,
-    c14: 0,
-    c15: 0,
-    c16: 0,
-    c17: 0,
-    c18: 0,
-    c19: 0,
-    c20: 0,
-    c21: 0,
-    c22: 0,
-    c23: 0,
-    c24: 0,
-    c25: 0,
-    c26: 0,
-    c27: 0,
-    c28: 0,
-    c29: 0,
-    c30: 0,
-    c31: 0,
-    c32: 0,
-    c33: 0,
-    c34: 0,
-    c35: 0,
-    c36: 0,
-    c37: 0,
-    c38: 0,
-    c39: 0,
-    c40: 0,
-    c41: 0,
-    c42: 0,
-    c43: 0,
-    c44: 0,
-    c45: 0,
-    c46: 0,
-    ...
-  ],
-  [
-    c65: 0,
-    c66: 0,
-    c67: 0,
-    c68: 0,
-    c69: 0,
-    c70: 0,
-    c71: 0,
-    c72: 0,
-    c73: 0,
-    c74: 0,
-    c75: 0,
-    c76: 0,
-    c77: 0,
-    c78: 0,
-    c79: 0,
-    c80: 0,
-    c81: 0,
-    c82: 0,
-    c83: 0,
-    c84: 0,
-    c85: 0,
-    c86: 0,
-    c87: 0,
-    c88: 0,
-    c89: 0,
-    c90: 0,
-    c91: 0,
-    c92: 0,
-    c93: 0,
-    c94: 0,
-    c95: 0,
-    c96: 0,
-    c97: 0,
-    c98: 0,
-    c99: 0,
-    c100: 0,
-    c101: 0,
-    c102: 0,
-    c103: 0,
-    c104: 0,
-    c105: 0,
-    c106: 0,
-    c107: 0,
-    c108: 0,
-    c109: 0,
-    ...
-  ], :flagBMSec_NO,
-  [
-    c128: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c127: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c126: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c125: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c124: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c123: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c122: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c121: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c120: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c119: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c118: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c117: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c116: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c115: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c114: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c113: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c112: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c111: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c110: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c109: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c108: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c107: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c106: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c105: %{code: :ascii, length: 999, type: "ANS", var_length: 3},
-    c104: %{code: :ascii, length: 100, type: "ANS", var_length: 3},
-    c103: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c102: %{code: :ascii, length: 28, type: "ANS", var_length: 2},
-    c101: %{code: :ascii, length: 17, type: "ANS", var_length: 2},
-    c100: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c99: %{code: :ascii, length: 11, type: "N", var_length: 2},
-    c98: %{code: :ascii, length: 25, type: "ANS", var_length: 0},
-    c97: %{code: :ascii, length: 16, type: "N", var_length: 0},
-    c96: %{code: :ascii, length: 64, type: "B", var_length: 0},
-    c95: %{code: :ascii, length: 42, type: "AN", var_length: 0},
-    c94: %{code: :ascii, length: 7, type: "AN", var_length: 0},
-    c93: %{code: :ascii, length: 5, type: "AN", var_length: 0},
-    c92: %{code: :ascii, length: 2, type: "AN", var_length: 0},
-    c91: %{code: :ascii, length: 1, type: "AN", var_length: 0},
-    c90: %{code: :ascii, length: 42, type: "N", var_length: 0},
-    c89: %{code: :ascii, length: 16, type: "N", ...},
-    c88: %{code: :ascii, length: 16, ...},
-    c87: %{code: :ascii, ...},
-    c86: %{...},
-    ...
-  ]}, {:ok, "OK delete"}}
 
  """
   def deleteField( key,{:iso,listISO,{listBitMapP,listBitMapS,flagBMSec,listISOconf},_}) do 
@@ -918,18 +309,10 @@ iex(1)> isoMTI=Ale8583.new_with_out_conf({"0800","/Users/ale/testPrograms/ale858
     end
   end
   @doc """
-  Function for  print a prety fields ISO .
-  
+  Function for  print a prety fields ISO.
   ## Examples
-  iex(2)> Ale8583.printAll(isoMTI, "Mensaje ISO: " )
 
-13:24:39.471 [error] Mensaje ISO:
-mti<0800>
-bp<0000000000000000>
-bs<0000000000000000>
 
-:ok
-iex(3)>
  """
   def printAll({atomISO ,listISO,{_,_,_,listISOconf},_}, extra) do
     case atomISO do
