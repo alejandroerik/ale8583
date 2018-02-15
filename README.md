@@ -64,7 +64,7 @@ Where:
 
 
 ### Test Example : 
-
+```ruby
 test "list to iso type :prosa" do
     listRAW='ISO0060000400800822000000000000004000000000000000804180203010449101'
     strHeadProsa=Enum.take(listRAW,12) |> List.to_string #String.slice(data,0,12)
@@ -111,12 +111,12 @@ test "list to iso type :prosa" do
     Logger.info "Result : #{inspect status} #{inspect message}"
     assert status == :ok
   end
-
+```
 Output: 
-
+```
 Finished in 0.1 seconds
 3 doctests, 4 tests, 0 failures
-
+```
 
 
 
