@@ -20,7 +20,7 @@ Elixir 1.5+.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+If [available in Hex](https://hex.pm/packages/ale8583), the package can be installed
 by adding `ale8583` to your list of dependencies in `mix.exs`:
 
 ```elixir
