@@ -14,7 +14,7 @@ ISO8583(MasterC and PROSA) parser for ELIXIR language.
 
 ### Prerequisites
 
-Elixir 1.4+.
+Elixir 1.5+.
 
 
 
@@ -119,5 +119,8 @@ Finished in 0.1 seconds
 3 doctests, 4 tests, 0 failures
 ```
 
+## Donations:
 
+ETH : 0xc1b633a45c45d1d34cdda66459ff681f9c2b42a0
+BTC : 
 
