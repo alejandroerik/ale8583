@@ -6,7 +6,7 @@
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/alejandroErik)
 
 
-ISO8583(MasterC and PROSA) parser for ELIXIR language.
+ISO8583(MasterC and PROSA)(Release v0.1.1) parser for ELIXIR language .
 
 ## Getting Started
 
